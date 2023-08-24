@@ -21,7 +21,7 @@ import net.minecraft.potion.Potion
 @ModuleInfo(name = "Regen", category = ModuleCategory.PLAYER)
 object Regen : Module() {
 
-    private val modeValue = ListValue("Mode", arrayOf("Vanilla", "OldSpartan", "NewSpartan", "AAC4NoFire","Intave"), "Vanilla")
+    private val modeValue = ListValue("Mode", arrayOf("Vanilla", "OldSpartan", "NewSpartan", "AAC4NoFire", "Intave"), "Vanilla")
     private val healthValue = IntegerValue("Health", 18, 0, 20)
     private val delayValue = IntegerValue("Delay", 0, 0, 1000)
     private val foodValue = IntegerValue("Food", 18, 0, 20)
