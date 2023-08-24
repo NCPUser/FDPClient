@@ -21,7 +21,7 @@ import net.minecraft.potion.Potion
 @ModuleInfo(name = "Regen", category = ModuleCategory.PLAYER)
 object Regen : Module() {
 
-    private val modeValue = ListValue("Mode", arrayOf("Vanilla", "OldSpartan", "NewSpartan", "AAC4NoFire"), "Vanilla")
+    private val modeValue = ListValue("Mode", arrayOf("Vanilla", "OldSpartan", "NewSpartan", "AAC4NoFire","Intave"), "Vanilla")
     private val healthValue = IntegerValue("Health", 18, 0, 20)
     private val delayValue = IntegerValue("Delay", 0, 0, 1000)
     private val foodValue = IntegerValue("Food", 18, 0, 20)
@@ -71,6 +71,19 @@ object Regen : Module() {
                         }
                     }
                 }
+                
+                "intave" -> {
+                 if (teleported) {
+                    for (int i = 0; i < 20; i++) {
+                    PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.lastTickPosX, mc.thePlayer.lastTickPosY, mc.thePlayer.lastTickPosZ, false));
+                    }
+                    mc.thePlayer.setPositionAndUpdate(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ);
+                }
+            } else {
+                teleported = false;
+          }
+    }
+
 
                 "newspartan" -> {
                     if (mc.thePlayer.ticksExisted % 5 == 0) {
